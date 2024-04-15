@@ -1,4 +1,4 @@
-const db = require('../db');
+const db = require('../db/db');
 
 class Hobby {
   static create(hobbyName, person_idperson) {
@@ -22,6 +22,19 @@ class Hobby {
           reject(err);
         } else {
           resolve(rows);
+        }
+      });
+    });
+  }
+
+  static getById(idhobby) {
+    return new Promise((resolve, reject) => {
+      const selectQuery = `SELECT * FROM hobby WHERE idhobby = ?`;
+      db.get(selectQuery, [idhobby], (err, row) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(row);
         }
       });
     });

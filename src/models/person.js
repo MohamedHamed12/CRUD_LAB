@@ -12,6 +12,7 @@ class Person {
         }
       });
     });
+    
   }
 
   static getAll() {
@@ -22,6 +23,19 @@ class Person {
           reject(err);
         } else {
           resolve(rows);
+        }
+      });
+    });
+  }
+
+  static getById(idperson) {
+    return new Promise((resolve, reject) => {
+      const selectQuery = `SELECT * FROM person WHERE idperson = ?`;
+      db.get(selectQuery, [idperson], (err, row) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(row);
         }
       });
     });

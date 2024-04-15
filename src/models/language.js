@@ -1,4 +1,4 @@
-const db = require('../db');
+const db = require('../db/db');
 
 class Language {
   static create(languageName, person_idperson) {
@@ -22,6 +22,19 @@ class Language {
           reject(err);
         } else {
           resolve(rows);
+        }
+      });
+    });
+  }
+
+  static getById(idlanguage) {
+    return new Promise((resolve, reject) => {
+      const selectQuery = `SELECT * FROM language WHERE idlanguage = ?`;
+      db.get(selectQuery, [idlanguage], (err, row) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(row);
         }
       });
     });

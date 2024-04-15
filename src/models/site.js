@@ -1,4 +1,4 @@
-const db = require('../db');
+const db = require('../db/db');
 
 class Site {
   static create(siteAddress, person_idperson) {
@@ -22,6 +22,19 @@ class Site {
           reject(err);
         } else {
           resolve(rows);
+        }
+      });
+    });
+  }
+
+  static getById(idsite) {
+    return new Promise((resolve, reject) => {
+      const selectQuery = `SELECT * FROM site WHERE idsite= ?`;
+      db.get(selectQuery, [idsite], (err, row) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(row);
         }
       });
     });

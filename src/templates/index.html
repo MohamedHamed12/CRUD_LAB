@@ -8,7 +8,7 @@
 <body>
   <h1>Add Data</h1>
   
-  <form action="/home" method="POST">
+  <form  id="myForm" action="/home" method="POST">
     <!-- Person Information -->
     <fieldset>
       <legend>Person Information</legend>
@@ -31,12 +31,17 @@
       <input type="email" id="Email" name="Email" required><br><br>
     </fieldset>
 
-    <!-- Language Information -->
-    <fieldset>
-      <legend>Language Information</legend>
-      <label for="languageName">Language Name:</label>
-      <input type="text" id="languageName" name="languageName" required><br><br>
-    </fieldset>
+
+    <fieldset id="languageFieldset">
+            <legend>Language Information</legend>
+            <div class="languageEntry">
+                <label for="languageName">Language Name:</label>
+                <input type="text" class="languageName" name="languageName" required><br><br>
+            </div>
+        </fieldset>
+
+        <!-- Button to add more language fields -->
+        <button type="button" id="addLanguageButton">Add Another Language</button>
 
     <!-- Course Information -->
     <fieldset>
@@ -77,5 +82,9 @@
 
     <button type="submit">Submit</button>
   </form>
+
+
+      <script src="script.js"></script>
+
 </body>
 </html>
