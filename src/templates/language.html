@@ -1,0 +1,28 @@
+<!-- language.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Languages</title>
+</head>
+<body>
+  <h1>Languages</h1>
+  <ul id="languages-list"></ul>
+
+  <script>
+    async function fetchLanguagesAndRender() {
+      try {
+        const response = await fetch('/languages');
+        const data = await response.json();
+        const languagesList = document.getElementById('languages-list');
+        languagesList.innerHTML = data.map(language => `<li>${language.languageName}</li>`).join('');
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    window.onload = fetchLanguagesAndRender;
+  </script>
+</body>
+</html>
